@@ -212,16 +212,20 @@
     <!-- Call To Action Start -->
     ?
     <!-- Call To Action End -->
-
     <style>
-           h1, h2, h3 {
+        /* Existing Styles */
+        h1,
+        h2,
+        h3 {
             color: #2c3e50;
         }
+
         .tabs {
             display: flex;
             justify-content: center;
             margin-top: 20px;
         }
+
         .tab {
             padding: 15px 30px;
             cursor: pointer;
@@ -232,10 +236,12 @@
             font-weight: bold;
             transition: background 0.3s;
         }
+
         .tab.active {
             background: #3498db;
             color: white;
         }
+
         .content {
             display: none;
             padding: 20px;
@@ -243,11 +249,13 @@
             border-radius: 10px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
+
         .content.active {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
+
         .box {
             width: 300px;
             margin: 15px;
@@ -258,15 +266,18 @@
             text-align: center;
             transition: transform 0.3s ease-in-out;
         }
+
         .box:hover {
             transform: translateY(-10px);
         }
+
         .box img {
             width: 100%;
             height: 200px;
             border-radius: 15px;
             object-fit: cover;
         }
+
         .btnn {
             display: inline-block;
             margin-top: 15px;
@@ -278,9 +289,57 @@
             border-radius: 25px;
             font-weight: bold;
             transition: background 0.3s;
+            cursor: pointer;
         }
+
         .btnn:hover {
             background-color: #1da851;
+        }
+
+        /* Popup Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            text-align: center;
+            position: relative;
+        }
+
+        .popup img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .popup h3 {
+            margin: 10px 0;
+        }
+
+        .popup p {
+            margin: 5px 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            color: red;
         }
     </style>
 
@@ -295,82 +354,88 @@
             <img src="cars/Mercedes-Benz S-Class.png" alt="Mercedes-Benz S-Class">
             <h3>Mercedes-Benz S-Class</h3>
             <p>Luxury Sedan - Smooth & Comfortable</p>
-            <a href="https://wa.me/09138241870" class="btnn">Contact on WhatsApp</a>
-        </div>
-        <div class="box">
-            <img src="cars/Mercedes-Benz S-Class.png" alt="Mercedes-Benz S-Class">
-            <h3>Mercedes-Benz S-Class</h3>
-            <p>Luxury Sedan - Smooth & Comfortable</p>
-            <a href="https://wa.me/09138241870" class="btnn">Contact on WhatsApp</a>
-        </div>
-        <div class="box">
-            <img src="cars/Mercedes-Benz S-Class.png" alt="Mercedes-Benz S-Class">
-            <h3>Mercedes-Benz S-Class</h3>
-            <p>Luxury Sedan - Smooth & Comfortable</p>
-            <a href="https://wa.me/09138241870" class="btnn">Contact on WhatsApp</a>
+            <button class="btnn"
+                onclick="openPopup('Mercedes-Benz S-Class', 'cars/Mercedes-Benz S-Class.png', 'Engine: V8 Twin-Turbo | Year: 2023 | Color: Black', '$200/day')">Book
+                Now</button>
         </div>
         <div class="box">
             <img src="cars/Ford Mustang GT.png" alt="Ford Mustang GT">
             <h3>Ford Mustang GT</h3>
             <p>Sporty Coupe - Fast & Stylish</p>
-            <a href="https://wa.me/09138241870" class="btnn">Contact on WhatsApp</a>
+            <button class="btnn"
+                onclick="openPopup('Ford Mustang GT', 'cars/Ford Mustang GT.png', 'Engine: 5.0L V8 | Year: 2022 | Color: Red', '$150/day')">Book
+                Now</button>
         </div>
-        <div class="box">
-            <img src="cars/Ford Mustang GT.png" alt="Ford Mustang GT">
-            <h3>Ford Mustang GT</h3>
-            <p>Sporty Coupe - Fast & Stylish</p>
-            <a href="https://wa.me/09138241870" class="btnn">Contact on WhatsApp</a>
-        </div>
-        <div class="box">
-            <img src="cars/Ford Mustang GT.png" alt="Ford Mustang GT">
-            <h3>Ford Mustang GT</h3>
-            <p>Sporty Coupe - Fast & Stylish</p>
-            <a href="https://wa.me/09138241870" class="btnn">Contact on WhatsApp</a>
-        </div>
-        <!-- Add more car listings here -->
     </div>
 
     <div id="houses" class="content">
-        <script>
-            const houseData = [
-                { name: "The Grand Villa", image: "cars/The Grand Villa.png" },
-                { name: "Sunset Haven", image: "cars/Sunset Haven.png" },
-                { name: "Maple Residence", image: "cars/Maple Residence.png" },
-                { name: "Lakeside Retreat", image: "cars/Lakeside Retreat.png" },
-                { name: "Hilltop Mansion", image: "cars/Hilltop Mansion.png" },
-                { name: "Cozy Cottage", image: "cars/Cozy Cottage.png" },
-                { name: "Oceanview Estate", image: "cars/Oceanview Estate.png" },
-                { name: "Modern Loft", image: "cars/Modern Loft.png" },
-                { name: "Serene Bungalow", image: "cars/Serene Bungalow.png" },
-                { name: "Luxury Penthouse", image: "cars/Luxury Penthouse.png" }
-            ];
+        <div class="box">
+            <img src="cars/The Grand Villa.png" alt="The Grand Villa">
+            <h3>The Grand Villa</h3>
+            <p>Spacious & Comfortable</p>
+            <button class="btnn"
+                onclick="openPopup('The Grand Villa', 'cars/The Grand Villa.png', 'Size: 5000 sq ft | Bedrooms: 5 | View: Oceanfront', '$500/night')">Book
+                Now</button>
+        </div>
+        <div class="box">
+            <img src="cars/Sunset Haven.png" alt="Sunset Haven">
+            <h3>Sunset Haven</h3>
+            <p>Spacious & Comfortable</p>
+            <button class="btnn"
+                onclick="openPopup('Sunset Haven', 'cars/Sunset Haven.png', 'Size: 5000 sq ft | Bedrooms: 5 | View: Oceanfront', '$500/night')">Book
+                Now</button>
+        </div>
+        <div class="box">
+            <img src="cars/The Grand Villa.png" alt="The Grand Villa">
+            <h3>The Grand Villa</h3>
+            <p>Spacious & Comfortable</p>
+            <button class="btnn"
+                onclick="openPopup('The Grand Villa', 'cars/The Grand Villa.png', 'Size: 5000 sq ft | Bedrooms: 5 | View: Oceanfront', '$500/night')">Book
+                Now</button>
+        </div>
+        <div class="box">
+            <img src="cars/Sunset Haven.png" alt="Sunset Haven">
+            <h3>Sunset Haven</h3>
+            <p>Spacious & Comfortable</p>
+            <button class="btnn"
+                onclick="openPopup('Sunset Haven', 'cars/Sunset Haven.png', 'Size: 5000 sq ft | Bedrooms: 5 | View: Oceanfront', '$500/night')">Book
+                Now</button>
+        </div>
+    </div>
 
-            houseData.forEach(house => {
-                document.write(`
-                <div class="box">
-                    <img src="${house.image}" alt="${house.name}">
-                    <h3>${house.name}</h3>
-                    <p>Spacious & Comfortable</p>
-                    <a href="https://wa.me/09138241870" class="btnn">Contact on WhatsApp</a>
-                </div>
-            `);
-            });
-        </script>
+    <!-- Popup Structure -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <img id="popup-image" src="" alt="">
+            <h3 id="popup-title"></h3>
+            <p id="popup-details"></p>
+            <p><strong id="popup-price"></strong></p>
+            <a id="popup-booking" class="btnn" href="#" target="_blank">Proceed to Book</a>
+        </div>
     </div>
 
     <script>
         function showTab(tabName) {
-            document.querySelectorAll('.content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
+            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
             document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add('active');
         }
-    </script>
 
+        function openPopup(title, image, details, price) {
+            document.getElementById('popup-title').textContent = title;
+            document.getElementById('popup-image').src = image;
+            document.getElementById('popup-details').textContent = details;
+            document.getElementById('popup-price').textContent = price;
+            document.getElementById('popup-booking').href = "https://wa.me/09138241870";
+            document.getElementById('popup-overlay').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popup-overlay').style.display = 'none';
+        }
+    </script>
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -420,7 +485,7 @@
                         &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
 
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                     </div>
+                    </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
                             <a href="">Home</a>
